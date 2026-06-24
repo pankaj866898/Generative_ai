@@ -1,0 +1,101 @@
+# =====================
+# DAY 3 - JSON & RAG STYLE DATA PROCESSING
+# =====================
+
+import json
+
+# =====================
+# PYTHON DICTIONARY TO JSON
+# =====================
+
+student = {
+    "name": "Pankaj",
+    "age": 24,
+    "skills": ["Python", "RAG"]
+}
+
+json_data = json.dumps(student)
+
+print("Dictionary to JSON:")
+print(json_data)
+
+
+# =====================
+# JSON TO PYTHON DICTIONARY
+# =====================
+
+json_string = '{"city": "Pune", "country": "India"}'
+
+data = json.loads(json_string)
+
+print("\nJSON to Dictionary:")
+print(data)
+print("City:", data["city"])
+
+
+# =====================
+# NESTED DICTIONARY
+# =====================
+
+profile = {
+    "user": {
+        "name": "Pankaj",
+        "domain": "Generative AI"
+    }
+}
+
+print("\nNested Dictionary:")
+print(profile["user"]["name"])
+
+
+# =====================
+# LIST INSIDE DICTIONARY
+# =====================
+
+skills_data = {
+    "skills": ["Python", "RAG", "GenAI"]
+}
+
+print("\nSkills:")
+print(skills_data["skills"][0])
+print(skills_data["skills"][2])
+
+
+# =====================
+# RAG STYLE RESPONSE
+# =====================
+
+response = {
+    "documents": [
+        {"text": "AI is amazing", "score": 0.95},
+        {"text": "Python is easy", "score": 0.87},
+        {"text": "RAG is powerful", "score": 0.92}
+    ]
+}
+
+print("\nAll Documents:")
+
+for doc in response["documents"]:
+    print(doc["text"])
+
+
+# =====================
+# FILTER HIGH SCORE DOCUMENTS
+# =====================
+
+print("\nDocuments with Score > 0.9:")
+
+for doc in response["documents"]:
+    if doc["score"] > 0.9:
+        print(doc["text"])
+
+
+# =====================
+# FUNCTION + JSON DATA
+# =====================
+
+def show_document(document):
+    return f"Text: {document['text']} | Score: {document['score']}"
+
+print("\nDocument Details:")
+print(show_document(response["documents"][0]))

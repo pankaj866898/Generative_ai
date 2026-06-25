@@ -1,0 +1,65 @@
+# Day 4 - RAG Fundamentals
+
+# Sample Knowledge Base
+
+documents = [
+    {
+        "id": 1,
+        "text": "RAG stands for Retrieval Augmented Generation."
+    },
+    {
+        "id": 2,
+        "text": "Python is widely used in Generative AI."
+    },
+    {
+        "id": 3,
+        "text": "LangChain helps developers build LLM applications."
+    },
+    {
+        "id": 4,
+        "text": "Vector databases store embeddings for semantic search."
+    }
+]
+
+
+# Retrieval Function
+
+def retrieve_documents(query):
+
+    results = []
+
+    for doc in documents:
+
+        if query.lower() in doc["text"].lower():
+            results.append(doc)
+
+    return results
+
+
+# Main Program
+
+query = input("Ask a question: ")
+
+retrieved_docs = retrieve_documents(query)
+
+print("\nRetrieved Documents:\n")
+
+if len(retrieved_docs) == 0:
+    print("No relevant documents found.")
+
+else:
+
+    for doc in retrieved_docs:
+
+        print(f"Document ID: {doc['id']}")
+        print(f"Content: {doc['text']}")
+        print("-" * 40)
+
+
+# Simulated Response Generation
+
+if retrieved_docs:
+
+    print("\nGenerated Answer:")
+
+    print(retrieved_docs[0]["text"])

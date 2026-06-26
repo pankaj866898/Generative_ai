@@ -1,0 +1,89 @@
+# Day 5 - RAG Ingestion Pipeline
+
+# Step 1: Sample Documents
+
+documents = [
+    "Python is a popular programming language.",
+    "Retrieval-Augmented Generation improves LLM responses.",
+    "Embeddings convert text into vector representations.",
+    "Vector databases store embeddings for semantic search."
+]
+
+
+# Step 2: Document Chunking
+
+def chunk_documents(docs):
+    chunks = []
+
+    for doc in docs:
+        chunks.append(doc)
+
+    return chunks
+
+
+# Step 3: Create Dummy Embeddings
+
+def create_embeddings(chunks):
+
+    embeddings = []
+
+    for chunk in chunks:
+
+        embedding = {
+            "content": chunk,
+            "vector_length": len(chunk)   # Dummy embedding
+        }
+
+        embeddings.append(embedding)
+
+    return embeddings
+
+
+# Step 4: Store in Vector Database (Simulation)
+
+vector_database = []
+
+
+def store_embeddings(embeddings):
+
+    for embedding in embeddings:
+        vector_database.append(embedding)
+
+
+# Step 5: Retrieve Relevant Data
+
+def retrieve(query):
+
+    results = []
+
+    for item in vector_database:
+
+        if query.lower() in item["content"].lower():
+            results.append(item)
+
+    return results
+
+
+# ------------------------------
+# Main Program
+# ------------------------------
+
+chunks = chunk_documents(documents)
+
+embeddings = create_embeddings(chunks)
+
+store_embeddings(embeddings)
+
+query = input("Ask a question: ")
+
+results = retrieve(query)
+
+print("\nRetrieved Documents:\n")
+
+if results:
+
+    for result in results:
+        print(result["content"])
+
+else:
+    print("No relevant document found.")

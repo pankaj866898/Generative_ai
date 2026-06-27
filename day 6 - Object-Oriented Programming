@@ -1,0 +1,82 @@
+# Day 6 - Object-Oriented Programming (OOP)
+
+# -----------------------------
+# Class and Object
+# -----------------------------
+
+class Student:
+
+    def __init__(self, name, course):
+        self.name = name
+        self.course = course
+
+    def display(self):
+        print(f"Name   : {self.name}")
+        print(f"Course : {self.course}")
+
+
+student1 = Student("Pankaj", "Generative AI")
+student1.display()
+
+
+# -----------------------------
+# Inheritance
+# -----------------------------
+
+class AIStudent(Student):
+
+    def __init__(self, name, course, skill):
+        super().__init__(name, course)
+        self.skill = skill
+
+    def show_skill(self):
+        print(f"Skill  : {self.skill}")
+
+
+student2 = AIStudent("Rahul", "AI & DS", "Python")
+
+student2.display()
+student2.show_skill()
+
+
+# -----------------------------
+# Encapsulation
+# -----------------------------
+
+class BankAccount:
+
+    def __init__(self, balance):
+        self.__balance = balance
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def show_balance(self):
+        print("Balance:", self.__balance)
+
+
+account = BankAccount(5000)
+account.deposit(1500)
+account.show_balance()
+
+
+# -----------------------------
+# Polymorphism
+# -----------------------------
+
+class Dog:
+
+    def sound(self):
+        print("Dog says: Bark")
+
+
+class Cat:
+
+    def sound(self):
+        print("Cat says: Meow")
+
+
+animals = [Dog(), Cat()]
+
+for animal in animals:
+    animal.sound()

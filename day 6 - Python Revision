@@ -1,0 +1,68 @@
+# Day 6 - Python Revision
+
+# Function
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("Pankaj"))
+
+
+# List
+skills = ["Python", "SQL", "Generative AI"]
+
+skills.append("RAG")
+
+print("Skills:", skills)
+
+
+# Dictionary
+student = {
+    "name": "Pankaj",
+    "course": "AI & DS",
+    "goal": "Generative AI Engineer"
+}
+
+print(student)
+
+print("Goal:", student["goal"])
+
+
+# Loop
+print("\nLearning Skills:")
+
+for skill in skills:
+    print(skill)
+
+
+# File Handling
+with open("notes.txt", "w") as file:
+    file.write("Python Revision Day 6")
+
+with open("notes.txt", "r") as file:
+    print("\nFile Content:")
+    print(file.read())
+
+
+# Exception Handling
+try:
+    number = int(input("\nEnter a number: "))
+    print("Square:", number * number)
+
+except ValueError:
+    print("Please enter a valid integer.")
+
+
+# OOP
+class Student:
+
+    def __init__(self, name, domain):
+        self.name = name
+        self.domain = domain
+
+    def display(self):
+        print(f"\nName   : {self.name}")
+        print(f"Domain : {self.domain}")
+
+
+student1 = Student("Pankaj", "Generative AI")
+student1.display()

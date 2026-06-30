@@ -1,0 +1,29 @@
+# Day 8 - Embeddings Basics (Simulation)
+
+documents = [
+    "Python is used for AI development.",
+    "RAG improves LLM responses.",
+    "Embeddings convert text into vectors.",
+    "Vector databases store embeddings."
+]
+
+
+# Simulate Embedding Creation
+def create_embedding(text):
+    return {
+        "text": text,
+        "length": len(text),
+        "words": len(text.split())
+    }
+
+
+embeddings = []
+
+for doc in documents:
+    embeddings.append(create_embedding(doc))
+
+
+print("Embeddings:\n")
+
+for embedding in embeddings:
+    print(embedding)

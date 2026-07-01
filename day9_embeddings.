@@ -1,0 +1,22 @@
+from sentence_transformers import SentenceTransformer
+
+# Load Embedding Model
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+# Sample Documents
+documents = [
+    "Python is used for AI development.",
+    "Retrieval-Augmented Generation improves LLM responses.",
+    "Embeddings convert text into vectors.",
+    "Vector databases store embeddings for semantic search."
+]
+
+# Create Embeddings
+embeddings = model.encode(documents)
+
+print("Embedding Dimension:", len(embeddings[0]))
+
+for index, embedding in enumerate(embeddings, start=1):
+    print(f"\nDocument {index}:")
+    print(documents[index - 1])
+    print("First 10 values:", embedding[:10])

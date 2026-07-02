@@ -1,0 +1,45 @@
+import chromadb
+from sentence_transformers import SentenceTransformer
+
+# Load embedding model
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+# Create ChromaDB client
+client = chromadb.Client()
+
+# Create collection
+collection = client.create_collection(name="genai_notes")
+
+# Sample documents
+documents = [
+    "Python is used for AI development.",
+    "RAG improves LLM responses using external knowledge.",
+    "Embeddings convert text into vectors.",
+    "ChromaDB stores embeddings for semantic search."
+]
+
+# Generate embeddings
+embeddings = model.encode(documents).tolist()
+
+# Store in ChromaDB
+collection.add(
+    documents=documents,
+    embeddings=embeddings,
+    ids=["1", "2", "3", "4"]
+)
+
+# User query
+query = "What is RAG?"
+
+query_embedding = model.encode(query).tolist()
+
+# Search
+results = collection.query(
+    query_embeddings=[query_embedding],
+    n_results=2
+)
+
+print("Retrieved Documents:\n")
+
+for doc in results["documents"][0]:
+    print("-", doc)
